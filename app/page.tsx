@@ -17,7 +17,7 @@ export default function HomePage() {
   ]
 
   return (
-    <div className="min-h-screen bg-gray-950 text-white">
+    <div className="min-h-screen bg-black text-white">
       {/* Hero Section */}
       <section className="relative h-[70vh] flex items-center justify-center overflow-hidden">
         {/* Container for Background Image and Fade */}
@@ -61,7 +61,7 @@ export default function HomePage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {games.map((game) => (
             <Link href={`/games/${game.id}`} key={game.id} className="group">
-              <div className="bg-gray-900 rounded-xl overflow-hidden transition-transform duration-300 hover:scale-105 hover:shadow-lg hover:shadow-yellow-500/20 border border-gray-800 flex flex-col h-full">
+              <div className="bg-gray-800 rounded-xl overflow-hidden transition-transform duration-300 hover:scale-105 hover:shadow-lg hover:shadow-yellow-500/20 border border-gray-800 flex flex-col h-full">
                 <div className="relative h-48 flex-shrink-0">
                   <Image src={game.image} alt={game.name} fill className="object-cover" />
                 </div>
@@ -84,7 +84,7 @@ export default function HomePage() {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 bg-gray-900">
+      <section className="py-20 bg-gray-800">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12">Why Choose Us</h2>
 

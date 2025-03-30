@@ -7,7 +7,7 @@ import { notFound } from "next/navigation"
 const games = {
   minecraft: {
     name: "Minecraft",
-    image: "/placeholder.svg?height=600&width=1200",
+    image: "/images/minecraft-logo.png",
     packages: {
       small: { name: "Small", price: "$5.99/mo" },
       medium: { name: "Medium", price: "$12.99/mo" },
@@ -18,7 +18,7 @@ const games = {
         id: "vanilla",
         name: "Vanilla",
         description: "The original Minecraft experience with no modifications.",
-        checkoutUrl: "https://example.com/checkout/minecraft/vanilla",
+        checkoutUrl: "https://justgameservers.com/store/view/21",
       },
       {
         id: "paper",
@@ -127,25 +127,30 @@ export default function GameVersionPage({ params }: { params: { game: string; pa
   const packageDetails = game.packages[params.package as keyof typeof game.packages]
 
   return (
-    <div className="min-h-screen bg-gray-950 text-white">
-      {/* Hero Section */}
-      <section className="relative h-[40vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <Image
-            src={game.image || "/placeholder.svg"}
-            alt={`${game.name} Server`}
-            fill
-            className="object-cover opacity-40"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-gray-950"></div>
-        </div>
+    <div className="min-h-screen bg-black text-white">
+      {/* Hero Section - Updated Layout */}
+      <section className="h-[40vh] flex items-center bg-black">
+        <div className="container mx-auto px-4 flex flex-col md:flex-row items-center gap-8">
+          {/* Left Half: Text Content */}
+          <div className="md:w-1/2 text-center md:text-left">
+            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl mb-6">
+              {game.name} <span className="text-yellow-400">{packageDetails.name} Package</span>
+            </h1>
+            <p className="max-w-2xl text-xl text-gray-300">Choose your preferred game mode or version</p>
+          </div>
 
-        <div className="container relative z-10 px-4 mx-auto text-center">
-          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl mb-6">
-            {game.name} <span className="text-yellow-400">{packageDetails.name} Package</span>
-          </h1>
-          <p className="max-w-2xl mx-auto text-xl text-gray-300">Choose your preferred game mode or version</p>
+          {/* Right Half: Image */}
+          <div className="md:w-1/2 flex justify-center md:justify-end">
+            <div className="relative w-full max-w-md h-[30vh]">
+              <Image
+                src={game.image || "/placeholder.svg"}
+                alt={`${game.name} Server`}
+                fill
+                className="object-contain"
+                priority
+              />
+            </div>
+          </div>
         </div>
       </section>
 
